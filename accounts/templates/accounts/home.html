@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Login</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'home.css' %}">
+    <script src="{% static 'script.js' %}" defer></script>
+</head>
+
+
+<body>
+    <div class="container">
+        <h1>Welcome to SecureLogin</h1>
+        <p>Your Secure Login System</p>
+        
+        {% if user.is_authenticated %}
+            <p>
+                Hello, {{ user.username }}!
+                {% if profile.email_verified %}
+                    (Verified)
+                {% else %}
+                <div> 
+                    <p> Click to verify your <a style="color: white;" href="{% url 'verify_email' %}">email</a> </p>
+                </div>
+                {% endif %}
+                <p><a style = "color : white;", href ="{% url 'logout' %}">Logout</a></p>
+            </p>
+        {% else %}
+            <button onclick="window.location.href='/login';">Login</button>
+        {% endif %}
+    </div>
+</body>
+</html>

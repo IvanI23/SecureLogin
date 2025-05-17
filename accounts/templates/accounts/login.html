@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'home.css' %}">
+    <script src="{% static 'script.js' %}" defer></script>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Welcome to SecureLogin</h1>
+        <p>Your Secure Login System</p>
+        
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            document.getElementById("PloginModal").style.display = "flex";
+        });
+    </script>
+
+
+    <div id="PloginModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="window.location.href = '/';">&times;</span>
+            
+    <!-- Login Popup Modal (Default) -->
+        {% if not login_failed %}
+            <h2>Login</h2>
+        {% endif %}
+
+    <!-- Incorrect Login Modal (Shown Only if Login Failed) -->
+        {% if login_failed %}
+            <h2 style="color: red;">Incorrect Login</h2>
+        {% endif %}
+
+        <form method="POST" action="{% url 'login' %}">
+                {% csrf_token %}
+                <input type="text" name="username" placeholder="Username" required>
+                <input type="password" name="password" placeholder="Password" required>
+                <button type="submit">Login</button>
+            </form>
+            <a href="/register">Sign up</a>
+            <a href="/forgot-password">Forgot password?</a>
+        </div>
+    </div>
+
+</body>
+</html>

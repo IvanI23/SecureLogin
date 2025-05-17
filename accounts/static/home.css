@@ -1,0 +1,163 @@
+
+body {
+    font-family: 'Quicksand', sans-serif;
+    background: linear-gradient(135deg, #0a1f26, #113233);
+    color: #c8e6e6;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Main Container */
+.container {
+    text-align: center;
+    background: rgba(15, 40, 50, 0.9);
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 255, 200, 0.2), 0 0 40px rgba(0, 255, 200, 0.15);
+    backdrop-filter: blur(8px);
+}
+
+/* Title */
+h1 {
+    font-size: 2.5em;
+    color: #80e0d3;
+    text-shadow: 0 0 10px rgba(128, 224, 211, 0.7), 0 0 25px rgba(128, 224, 211, 0.5);
+}
+
+/* Paragraph */
+p {
+    font-size: 1.2em;
+    color: #a3f0db;
+    text-shadow: 0 0 5px rgba(163, 240, 219, 0.4);
+}
+
+p:hover {
+    transform: scale(1.05);
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.9);
+}
+
+
+/* Login Button */
+button {
+    background: linear-gradient(90deg, #13555e, #1b7a77);
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.2em;
+    color: white;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 0 15px rgba(19, 85, 94, 0.6);
+}
+
+button:hover {
+    background: linear-gradient(90deg, #1b7a77, #13555e);
+    box-shadow: 0 0 25px rgba(19, 85, 94, 0.9);
+    transform: scale(1.1);
+}
+
+/* Modal - Initially Hidden */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Modal Content */
+.modal-content {
+    background: rgba(15, 40, 50, 0.95);
+    padding: 20px;
+    border-radius: 10px;
+    width: 350px;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(0, 255, 200, 0.3), 0 0 40px rgba(0, 255, 200, 0.2);
+    backdrop-filter: blur(12px);
+}
+
+/* Close Button */
+.close {
+    float: right;
+    cursor: pointer;
+    font-size: 22px;
+    color: #80e0d3;
+}
+
+.close:hover {
+    color: #c8e6e6;
+}
+
+/* Input Fields */
+.modal-content input {
+    width: 90%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #80e0d3;
+    background-color: #0a1f26;
+    color: #c8e6e6;
+    border-radius: 5px;
+    font-size: 1em;
+    outline: none;
+}
+
+/* Input Focus Effect */
+.modal-content input:focus {
+    border: 1px solid #1b7a77;
+    box-shadow: 0 0 10px rgba(27, 122, 119, 0.8);
+}
+
+/* Links */
+.modal-content a {
+    display: block;
+    margin-top: 10px;
+    color: #0a90e9; /* Lighter red */
+    text-decoration: none;
+    transition: color 0.3s ease-in-out, text-shadow 0.3s ease-in-out;
+}
+
+.modal-content a:hover {
+    color: #06f3cb; /* Brighter red */
+    text-shadow: 0 0 10px rgba(15, 151, 129, 0.7);
+}
+
+/* Modal Button */
+.modal-content button {
+    padding: 12px 20px;
+    border: none;
+    background-color: #1b7a77;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.2em;
+    transition: all 0.3s ease-in-out;
+}
+
+.modal-content button:hover {
+    background-color: #13555e;
+    box-shadow: 0 0 15px rgba(19, 85, 94, 0.8);
+    transform: scale(1.05);
+}
+
+/* Modal Fade-In Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

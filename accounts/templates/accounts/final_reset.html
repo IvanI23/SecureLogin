@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'home.css' %}">
+    <script src="{% static 'script.js' %}" defer></script>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Welcome to SecureLogin</h1>
+        <p>Your Secure Login System</p>
+        
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            document.getElementById("forgotPasswordModal").style.display = "flex";
+        });
+    </script>
+
+    <div id="forgotPasswordModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="window.location.href = '/';">&times;</span>
+            
+            {% if verication_success %} 
+                <h2>Password Reset Successful</h2>
+                <p>Your password has been reset successfully.</p>
+                <a href="/login">Login</a>
+            {% elif verification_failed %}
+                <h2>Reset Password</h2>
+                <p class="error-message">The verification code is invalid or expired. </p> 
+                <form method="POST" action="{% url 'final_reset' %}">
+                    {% csrf_token %}
+                    <input type="email" name="email" placeholder="email" required>
+                    <input type="password" name="new_password" placeholder="new password" required>
+                    <button type="submit">Reset</button>
+                </form>
+                <a href="/register">Sign up</a>
+                <a href="/login">Login</a>
+            {% else %}
+                <h2>Reset Password</h2>
+                <p>If your account exists, then a code has been set. Please enter it below.</p>
+                <form method="POST" action="{% url 'final_reset' %}">
+                    {% csrf_token %}
+                    <input type="text" name="verification_code" placeholder="Enter Verification Code" required>
+                    <input type="email" name="email" placeholder="email" required>
+                    <input type="password" name="new_password" placeholder="new password" required>
+                    <button type="submit">Reset</button>
+            {% endif %}
+        </div>
+    </div>
+
+</body>
+</html>
